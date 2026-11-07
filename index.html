@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pathfinding Visualizer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="brand">
+            <div class="brand-icon">⌁</div>
+
+            <div>
+                <h1>Pathfinding</h1>
+                <span>Visualizer</span>
+            </div>
+        </div>
+
+        <div class="header-status">
+            <span class="status-dot"></span>
+            Interactive Algorithm Lab
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="container">
+
+        <!-- INTRO -->
+        <section class="intro">
+
+            <div class="eyebrow">
+                ALGORITHM VISUALIZATION
+            </div>
+
+            <h2>
+                Find the shortest path,
+                <span>visually.</span>
+            </h2>
+
+            <p>
+                Explore six pathfinding algorithms by creating obstacles
+                and watching the search happen step by step.
+            </p>
+
+        </section>
+
+
+        <!-- CONTROLS -->
+        <section class="control-panel">
+
+            <div class="control-group">
+
+                <label for="algorithm">
+                    Algorithm
+                </label>
+
+                <select id="algorithm">
+
+                    <option value="bfs">
+                        Breadth-First Search (BFS)
+                    </option>
+
+                    <option value="dfs">
+                        Depth-First Search (DFS)
+                    </option>
+
+                    <option value="dijkstra">
+                        Dijkstra's Algorithm
+                    </option>
+
+                    <option value="astar">
+                        A* Search
+                    </option>
+
+                    <option value="greedy">
+                        Greedy Best-First Search
+                    </option>
+
+                    <option value="bidirectional">
+                        Bidirectional BFS
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="control-group">
+
+                <label for="speed">
+                    Animation Speed
+                </label>
+
+                <select id="speed">
+
+                    <option value="fast">
+                        Fast
+                    </option>
+
+                    <option value="normal" selected>
+                        Normal
+                    </option>
+
+                    <option value="slow">
+                        Slow
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="control-actions">
+
+                <button
+                    id="visualizeBtn"
+                    class="primary-btn">
+                    ▶ Visualize
+                </button>
+
+                <button
+                    id="clearPathBtn"
+                    class="secondary-btn">
+                    Clear Path
+                </button>
+
+                <button
+                    id="clearBoardBtn"
+                    class="danger-btn">
+                    Clear Board
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- LEGEND -->
+        <section class="legend">
+
+            <div>
+                <span class="legend-box start"></span>
+                Start
+            </div>
+
+            <div>
+                <span class="legend-box end"></span>
+                End
+            </div>
+
+            <div>
+                <span class="legend-box wall"></span>
+                Wall
+            </div>
+
+            <div>
+                <span class="legend-box visited"></span>
+                Visited
+            </div>
+
+            <div>
+                <span class="legend-box path"></span>
+                Shortest Path
+            </div>
+
+        </section>
+
+
+        <!-- GRID -->
+        <section class="board-card">
+
+            <div class="board-header">
+
+                <div>
+
+                    <h3>
+                        Grid Workspace
+                    </h3>
+
+                    <p>
+                        Click and drag to create walls.
+                        Drag the start or end node to move it.
+                    </p>
+
+                </div>
+
+                <div
+                    id="message"
+                    class="message">
+                    Ready
+                </div>
+
+            </div>
+
+
+            <!-- IMPORTANT -->
+            <div
+                id="grid"
+                class="grid">
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+        <section class="statistics">
+
+            <div class="stat-card">
+
+                <span>
+                    Algorithm
+                </span>
+
+                <strong id="statAlgorithm">
+                    BFS
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Visited Nodes
+                </span>
+
+                <strong id="visitedCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Path Length
+                </span>
+
+                <strong id="pathLength">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Execution Time
+                </span>
+
+                <strong id="executionTime">
+                    0 ms
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- INFORMATION -->
+        <section class="info-grid">
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    01
+                </div>
+
+                <h3>
+                    Choose Algorithm
+                </h3>
+
+                <p>
+                    Select BFS, DFS, Dijkstra, A*,
+                    Greedy or Bidirectional BFS.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    02
+                </div>
+
+                <h3>
+                    Create Obstacles
+                </h3>
+
+                <p>
+                    Click or drag across cells
+                    to create walls.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    03
+                </div>
+
+                <h3>
+                    Visualize
+                </h3>
+
+                <p>
+                    Run the selected algorithm
+                    and observe the search.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            Pathfinding Visualizer · Computer Science Project
+        </p>
+
+        <p>
+            Built with HTML, CSS & JavaScript
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
